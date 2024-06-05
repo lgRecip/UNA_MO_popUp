@@ -204,7 +204,7 @@ var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI"
 //     nextState = "state1";
 // });
 
-var image1 = new BABYLON.GUI.Image("industriel", "../industriel.png");
+var image1 = new BABYLON.GUI.Image("industriel", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/industriel.png");
 // image1.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
     image1.width = 0.19526441;
     image1.height = 0.33;
@@ -223,7 +223,7 @@ var image1 = new BABYLON.GUI.Image("industriel", "../industriel.png");
             nextState = "state1";
         });
 
-        var image2 = new BABYLON.GUI.Image("commercial", "../commercial.png");
+        var image2 = new BABYLON.GUI.Image("commercial", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/commercial.png");
        // image2.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
      image2.width = 0.193221;
     image2.height = 0.33;
@@ -242,7 +242,7 @@ var image1 = new BABYLON.GUI.Image("industriel", "../industriel.png");
             nextState = "state2";
         });
 
-        var image3 = new BABYLON.GUI.Image("copropriété", "../copropriété.png");
+        var image3 = new BABYLON.GUI.Image("copropriété", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/copropriété.png");
        // image3.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
      image3.width = 0.15627442;
     image3.height = 0.33;
@@ -261,7 +261,7 @@ var image1 = new BABYLON.GUI.Image("industriel", "../industriel.png");
             nextState = "state3";
         });
 
-        var image4 = new BABYLON.GUI.Image("individuel", "../individuel.png");
+        var image4 = new BABYLON.GUI.Image("individuel", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/individuel.png");
       //  image4.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
      image4.width = 0.188347;
     image4.height = 0.33;
@@ -281,7 +281,7 @@ var image1 = new BABYLON.GUI.Image("industriel", "../industriel.png");
         });
 
 
-        var titrage = new BABYLON.GUI.Image("titrage", "../titre.png");
+        var titrage = new BABYLON.GUI.Image("titrage", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/titre.png");
         titrage.width = 0.75;
         titrage.height = 0.12866817;
         titrage.top = "-35%"; 
