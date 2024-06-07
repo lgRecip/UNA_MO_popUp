@@ -40,10 +40,12 @@ let animSolides;
 let meshElements;
 let animElements;
 let meshGround;
+
 var createScene = function () {
 // This creates a basic Babylon Scene object (non-mesh)
 engine = new BABYLON.Engine(canvas, true);
 scene = new BABYLON.Scene(engine);
+scene.clearColor = color_ardoise;
 // var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("textures/Studio_Softbox_2Umbrellas_cube_specular.dds", scene);
 // hdrTexture.gammaSpace = false;
 // scene.environmentTexture = hdrTexture;
@@ -59,6 +61,8 @@ camera.fov = 0.25;
 camera.setTarget(BABYLON.Vector3.Zero());
 camera.position = new BABYLON.Vector3(50, 25, -50);
 
+
+// plane.position =new BABYLON.Vector3(50, 25, -50)+ camera.getDirection(BABYLON.Vector3.Forward());
 var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 1, 0), scene);
 
     var light0 = new BABYLON.SpotLight("spot0", new BABYLON.Vector3(20,40, 10), new BABYLON.Vector3(-10, -20, -5),1.14,100, scene);
@@ -122,6 +126,7 @@ shadowGenerator0.getShadowMap().renderList.push(mymesh[i]);
 shadowGenerator1.getShadowMap().renderList.push(mymesh[i]);
 shadowGenerator0.addShadowCaster(mymesh[i]);
 shadowGenerator1.addShadowCaster(mymesh[i]);
+mymesh[i].isVisible = false;
 }
 
 });
@@ -143,6 +148,7 @@ shadowGenerator0.getShadowMap().renderList.push(mymesh[i]);
 shadowGenerator1.getShadowMap().renderList.push(mymesh[i]);
 shadowGenerator0.addShadowCaster(mymesh[i]);
 shadowGenerator1.addShadowCaster(mymesh[i]);
+mymesh[i].isVisible = false;
 }
 
 });
@@ -163,6 +169,7 @@ mymesh[i].receiveShadows = true;
 mymesh[i].material = groundMaterial;
 mymesh[i].checkCollisions = false;
 mymesh[i].isPickable = false;
+mymesh[i].isVisible = false;
 // shadowGenerator0.getShadowMap().renderList.push(mymesh[i]);
 // shadowGenerator1.getShadowMap().renderList.push(mymesh[i]);
 // shadowGenerator0.addShadowCaster(mymesh[i]);
@@ -302,113 +309,276 @@ var image1 = new BABYLON.GUI.Image("industriel", "https://raw.githubusercontent.
             nextState = "state2";
         });
 
-        var image3 = new BABYLON.GUI.Image("copropriété", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/copropriété.png");
-       // image3.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
-     image3.width = 0.15627442;
-    image3.height = 0.33;
-    image3.left = "12.5%"; 
-    // image3.top = "12.5%"; 
-    image3.top = "25%"; 
-    // image1.height = "300px";
-    // image3.populateNinePatchSlicesFromImage = true;
-    
-    // grid.addControl(image, 0, 0);
+ 
+     
 
-    image3.onPointerUpObservable.add(function() {
-        alert("3");
-        // nextState = "state3";
-        });
-        image3.onPointerMoveObservable.add(function() {
-            nextState = "state3";
-        });
+    //     var image4 = new BABYLON.GUI.Image("individuel", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/individuel.png");
+    //   //  image4.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
+    //  image4.width = 0.188347;
+    // image4.height = 0.33;
+    // image4.left = "37.5%"; 
+    // image4.top = "25%"; 
+    //     image4.alpha = 0;
+    // image4.onPointerUpObservable.add(function() {
+    //     alert("4");
+    //     // nextState = "state4";
+    //     });
+        
+    //     image4.onPointerMoveObservable.add(function() {
+    //         nextState = "state4";
+    //     });
 
-        var image4 = new BABYLON.GUI.Image("individuel", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/individuel.png");
-      //  image4.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
-     image4.width = 0.188347;
-    image4.height = 0.33;
-    image4.left = "37.5%"; 
-    image4.top = "25%"; 
 
-    image4.onPointerUpObservable.add(function() {
-        alert("4");
-        // nextState = "state4";
-        });
-        image4.onPointerMoveObservable.add(function() {
-            nextState = "state4";
-        });
 
 
         var titrage = new BABYLON.GUI.Image("titrage", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/titre.png");
         titrage.width = 0.75;
         titrage.height = 0.12866817;
         titrage.top = "-35%";
+       
+// var txt4 = new BABYLON.GUI.TextBlock();
+// txt4.text = "L'isolation thermique\nextérieure, c'est le plaisir\nde pouvoir conserver ou\nchanger l'esthétique de votre\nmaison et c'est sur tout\nl'assurance de faire de\nsérieuses économies !"
+// // txt4.style = style_0;
+// txt4.color ="#8f919b";
+// txt4.fontSize ='1.5%';
+// advancedTexture.addControl(txt4); 
 
-// var button2 = BABYLON.GUI.Button.CreateSimpleButton("but2", "2");
-// button2.width = 0.05;
-// button2.height = 0.05;
-// button2.left = "-12.5%"; 
-// button2.top = "12.5%"; 
-// button2.color = "black";
-// button2.cornerRadius = 20;
-// button2.background = "white";
-// button2.onPointerUpObservable.add(function() {
-// alert("2");
-// });
-// button2.onPointerMoveObservable.add(function() {
-//     nextState = "state2";
-// });
+// var logo_individuel = new BABYLON.GUI.Image("logo_individuel", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/logo_individuel.svg");
+// logo_individuel.width = 0.04;
+// logo_individuel.height = 0.04;
+// logo_individuel.top = "12.5%";
+// logo_individuel.alpha = 0.0;
+// advancedTexture.addControl(logo_individuel); 
+
+titreContainer = new BABYLON.GUI.Rectangle();
+titreContainer.width = 1;
+titreContainer.height = 1;
+titreContainer.alpha =0;
+titreContainer.isPointerBlocker = false;
+var titreImg = new BABYLON.GUI.Image("indiv", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/container_titrage.png");
+titreContainer.addControl(titreImg);
+
+residContainer = new BABYLON.GUI.Rectangle();
+residContainer.width = 1;
+residContainer.height = 1;
+residContainer.alpha =0;
+residContainer.isPointerBlocker = false;
+var residImg = new BABYLON.GUI.Image("indiv", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/container_residentiel.png");
+residContainer.addControl(residImg);
+
+indusContainer = new BABYLON.GUI.Rectangle();
+indusContainer.width = 1;
+indusContainer.height = 1;
+indusContainer.alpha =0;
+indusContainer.isPointerBlocker = false;
+var indusImg = new BABYLON.GUI.Image("indiv", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/container_industriel.png");
+indusContainer.addControl(indusImg);
+
+commContainer = new BABYLON.GUI.Rectangle();
+commContainer.width = 1;
+commContainer.height = 1;
+commContainer.alpha =0;
+commContainer.isPointerBlocker = false;
+var commImg = new BABYLON.GUI.Image("indiv", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/container_commercial.png");
+commContainer.addControl(commImg);
+
+indivContainer = new BABYLON.GUI.Rectangle();
+indivContainer.width = 1;
+indivContainer.height = 1;
+indivContainer.alpha =0;
+indivContainer.isPointerBlocker = false;
+var indivImg = new BABYLON.GUI.Image("indiv", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/container_individuel.png");
+indivContainer.addControl(indivImg);
 
 
-// var button3 = BABYLON.GUI.Button.CreateSimpleButton("but3", "3");
-// button3.width = 0.05;
-// button3.height = 0.05;
-// button3.left = "12.5%"; 
-// button3.top = "12.5%"; 
-// button3.color = "black";
-// button3.cornerRadius = 20;
-// button3.background = "white";
-// button3.onPointerUpObservable.add(function() {
-// alert("3");
-// });
-// button3.onPointerMoveObservable.add(function() {
-//     nextState = "state3";
-// });
+var residButton = new BABYLON.GUI.Image("industriel", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/industriel.png");
 
-// var button4 = BABYLON.GUI.Button.CreateSimpleButton("but4", "4");
-// button4.width = 0.05;
-// button4.height = 0.05;
-// button4.left = "37.5%";
-// button4.top = "12.5%"; 
-// button4.color = "black";
-// button4.cornerRadius = 20;
-// button4.background = "white";
-// button4.onPointerUpObservable.add(function() {
-// alert("4");
-// });
-// button4.onPointerMoveObservable.add(function() {
-//     nextState = "state4";
-// });
+residButton.width = 0.19526441;
+residButton.height = 0.33;
+residButton.left = "-37.5%"; 
+    residButton.top = "25%"; 
+    residButton.alpha = 0;
 
-//  advancedTexture.addControl(button1); 
-advancedTexture.addControl(image1); 
-advancedTexture.addControl(image2);  
-advancedTexture.addControl(image3);  
-advancedTexture.addControl(image4);  
-advancedTexture.addControl(titrage);  
+    residButton.onPointerUpObservable.add(function() {
+         alert("1");
+        });
+        residButton.onPointerMoveObservable.add(function() {
+            nextState = "state1";
+        });
+
+
+
+var indusButton = new BABYLON.GUI.Image("commercial", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/commercial.png");
+
+indusButton.width = 0.193221;
+indusButton.height = 0.33;
+indusButton.left = "-12.5%"; 
+indusButton .top = "25%"; 
+indusButton .alpha = 0;
+indusButton .onPointerUpObservable.add(function() {
+         alert("2");
+ });
+ indusButton .onPointerMoveObservable.add(function() {
+             nextState = "state2";
+});
+
+var commButton = new BABYLON.GUI.Image("commercial", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/commercial.png");
+commButton.width = 0.15627442;
+commButton.height = 0.33;
+commButton.left = "12.5%"; 
+commButton.top = "25%"; 
+commButton.alpha = 0;
+commButton.onPointerUpObservable.add(function() {
+         alert("3");
+ });
+commButton.onPointerMoveObservable.add(function() {
+             nextState = "state3";
+});
+
+var indivButton = new BABYLON.GUI.Image("individuel", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/individuel.png");
+indivButton.width = 0.188347;
+indivButton.height = 0.33;
+indivButton.left = "37.5%"; 
+indivButton.top = "25%"; 
+indivButton.alpha = 0;
+indivButton.onPointerUpObservable.add(function() {
+        alert("4");
+        });
+        
+indivButton.onPointerMoveObservable.add(function() {
+            nextState = "state4";
+        });
+
+
+
+advancedTexture.addControl(titreContainer);
+advancedTexture.addControl(commContainer);
+advancedTexture.addControl(residContainer);
+advancedTexture.addControl(indivContainer);
+advancedTexture.addControl(indusContainer);
+advancedTexture.addControl(residButton);
+advancedTexture.addControl(indusButton);
+advancedTexture.addControl(indivButton);
+advancedTexture.addControl(commButton);
+// advancedTexture.addControl(image4);
+// container.alpha = 1;
+// indiv.detectPointerOnOpaqueOnly = true;
+// advancedTexture.addControl(image1); 
+// advancedTexture.addControl(image2);  
+// advancedTexture.addControl(image3);  
+// advancedTexture.addControl(image4);  
+// advancedTexture.addControl(titrage);  
+
+// var layer = new BABYLON.Layer('','https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/maquette_v1_noSuject.jpg', scene, true);
+// layer.alpha = 0.3;
+
+var planeT = new BABYLON.TransformNode("plantTransform");
+
+videoPlane = new BABYLON.CreatePlane("videoPlane");
+videoPlane.scaling = new BABYLON.Vector3(0.25,0.25,0.25);
+
+videoPlane.parent = planeT; 
+var dir = camera.getDirection(BABYLON.Vector3.Forward());
+var camPos = camera.position;
+var planePos = new  BABYLON.Vector3(camPos.x+dir.x, camPos.y+dir.y, camPos.z+dir.z);
+// plane.position =planePos;
+var vecFwd = camera.getDirection(BABYLON.Vector3.Forward());
+var vecRight = camera.getDirection(BABYLON.Vector3.Right());
+var vecUp = camera.getDirection(BABYLON.Vector3.Up());
+var matT = new BABYLON.Matrix;
+matT.setRow(0, new BABYLON.Vector4(vecRight.x,vecRight.y,vecRight.z,0));
+matT.setRow(1, new BABYLON.Vector4(vecUp.x,vecUp.y,vecUp.z,0));
+matT.setRow(2, new BABYLON.Vector4(vecFwd.x,vecFwd.y,vecFwd.z,0));
+matT.setRow(3, new BABYLON.Vector4(planePos.x,planePos.y,planePos.z,1));
+planeT.setPreTransformMatrix(matT);
+videoMaterial = new BABYLON.StandardMaterial("videoMaterial", scene);
+var videoTexture = new BABYLON.VideoTexture("video", "https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/logoAnim.mp4", scene, true);
+
+videoMaterial.emissiveColor = new BABYLON.Color3.White();
+videoMaterial.disableLighting = true;
+videoMaterial.diffuseColor = color_ardoise;
+videoMaterial.diffuseTexture = videoTexture;
+// videoMaterial.alpha =1;
+videoPlane.material = videoMaterial;
+
+
+
 sceneToRender = scene;
 startRenderLoop(engine, canvas);
 return scene;
 };
 
+var indivContainer;
+var indusContainer;
+var commContainer;
+var residContainer;
+var titreContainer;
+
 var meshWellLoaded = false;
 async function Init() {
             
-          await createScene();  
+          await createScene();
           MeshLoadedChecker();
         StateChangeListener();
+        Intro();
         // StateHasChangedListener();
         // TestAnim();
 };
+var videoMaterial;
+var videoPlane;
+var introFrame = 0;
+var introduced = false;
+var introFrameIn = 90;
+var introAnimFrame = 226;
+function Intro(){
+    setInterval(function() {
+        if(!meshWellLoaded){
+            return;
+        }
+        if(introduced ){return;}
+        introFrame += 1;
+        var lerpAlpha = 1.0;
+        if(introFrame == 30)
+            {
+//                 let mymesh =meshElements.getChildMeshes();
+// console.log("mesh solides elmements count : "+mymesh.length);
+for (var i = 0; i < meshElements.getChildMeshes().length; i++) {
+    meshElements.getChildMeshes()[i].isVisible = true;
+    }
+    for (var i = 0; i < meshSolides.getChildMeshes().length; i++) {
+        meshSolides.getChildMeshes()[i].isVisible = true;
+        meshSolides.getChildMeshes()[i].diffuseColor = color_1;
+        }
+        for (var i = 0; i < meshGround.getChildMeshes().length; i++) {
+            meshGround.getChildMeshes()[i].isVisible = true;
+            }
+
+            scene.animationGroups[0].goToFrame(introAnimFrame);
+            scene.animationGroups[1].goToFrame(introAnimFrame);
+
+            }
+        if(introFrame > introFrameIn)
+            {
+
+                if(introAnimFrame<266){
+                introAnimFrame += 1;
+
+                scene.animationGroups[0].goToFrame(introAnimFrame);
+                scene.animationGroups[1].goToFrame(introAnimFrame);}
+              
+                lerpAlpha = 1.0 - (introFrame -introFrameIn)/90;
+                indivContainer.alpha =1 - lerpAlpha ;
+                indusContainer.alpha =1 - lerpAlpha ;
+                commContainer.alpha =1 - lerpAlpha ;
+                residContainer.alpha =1 - lerpAlpha ;
+                titreContainer.alpha =1 - lerpAlpha ;
+
+                videoPlane.material.alpha = lerpAlpha;
+                if(lerpAlpha<=0.0){introduced = true;}
+                // console.log(videoPlane.material.alpha);
+            }
+    }, 33);
+}
 
 function LightCasterAssignment()
 {
@@ -437,7 +607,7 @@ function MeshLoadedChecker(){
             }
     }, 16);
 }
-
+var lastState = "state1";
 var curState = "state1";
 var nextState = "state1";
 var isTransiting = false;
@@ -452,11 +622,19 @@ var endFrame_B = 0;
 // vert 160 191 56 // 0.627, 0.749, 0.22
 // jaune 234 186 77 // 0.918, 0.729, 0.302
 // fushia 195 27 121 // 0.765, 0.106, 0.475
+
 // ardoise 44 45 58 (fond anim logo) // 0.173, 0.176, 0.227
-var color_1 = new BABYLON.Color3(0.412, 0.627 ,0.796);
+
+// var color_1 = new BABYLON.Color3(0.412, 0.627 ,0.796);
+// var color_2 = new BABYLON.Color3(0.627, 0.749, 0.22);
+// var color_3 = new BABYLON.Color3(0.918, 0.729, 0.302);
+// var color_4 = new BABYLON.Color3(0.765, 0.106, 0.475);
+
+var color_1 = new BABYLON.Color3(0.918, 0.729, 0.302);
 var color_2 = new BABYLON.Color3(0.627, 0.749, 0.22);
-var color_3 = new BABYLON.Color3(0.918, 0.729, 0.302);
+var color_3 = new BABYLON.Color3(0.412, 0.627 ,0.796);
 var color_4 = new BABYLON.Color3(0.765, 0.106, 0.475);
+
 var color_current = new BABYLON.Color3(1,1,1);
 var color_A = new BABYLON.Color3(1,1,1);
 var color_B = new BABYLON.Color3(1,1,1);
@@ -465,7 +643,7 @@ var color_ardoise = new BABYLON.Color3(0.173, 0.176, 0.227);
 
 var frame = -1;
 var stateSwitched  = false;
-var lastState = "state1";
+
 var stateHasChanged = false;
 var fadingToA = false;
 var fadingToB = false;
@@ -500,22 +678,35 @@ function StateChangeListener(){
         stateSwitched = false;
         // startFrame_A = curFrame;
         // color_A = color_current;
-     
+        if(frame>0)
+            {frame = curFrame;}
+    
+            if(fadingToA && curState == nextState){
+                fadingToA = false;
+                frame =  Math.abs(Math.abs(endFrame_A-startFrame_A) - frame) + Math.abs(endFrame_A-startFrame_A);
+            }
+    
+            if(fadingToB){
+                fadingToB = false;
+                frame =  Math.abs(Math.abs(endFrame_B-startFrame_B) - frame);
+            }
         switch (curState) {
             case "state1":
-                startFrame_A = 1;
-                endFrame_A = 61;
+                startFrame_A = 266;
+                endFrame_A = 226;
+               
                 color_A = color_1;
               break;
             case "state2":
-                startFrame_A = 136;
-                endFrame_A = 91;
+                startFrame_A = 1;
+                endFrame_A = 61;
+               
                 color_A = color_2;
               break;
             
             case "state3":
-            startFrame_A = 266;
-            endFrame_A = 226;
+                startFrame_A = 136;
+                endFrame_A = 91;
             color_A = color_3;
           break;
           case "state4":
@@ -527,19 +718,21 @@ function StateChangeListener(){
 
           switch (nextState) {
             case "state1":
-                startFrame_B = 61;
-                endFrame_B = 1;
+                startFrame_B = 226;
+                endFrame_B = 266;
+                
                 color_B = color_1;
               break;
             case "state2":
-                startFrame_B = 91;
-                endFrame_B = 136;
+                startFrame_B = 61;
+                endFrame_B = 1;
+              
                 color_B = color_2;
               break;
             
             case "state3":
-            startFrame_B = 226;
-            endFrame_B = 266;
+                startFrame_B = 91;
+                endFrame_B = 136;
             color_B = color_3;
           break;
           case "state4":
@@ -548,15 +741,15 @@ function StateChangeListener(){
             color_B = color_4;
            break;
           }
-        if(frame>0)
-        {frame = curFrame;}
-        if(curState == nextState && fadingToA)
-        { 
-            // var frameTemp = frame;
-            // frame += Math.abs(endFrame_A-startFrame_A);
-            frame =  Math.abs(Math.abs(endFrame_A-startFrame_A) - frame) + Math.abs(endFrame_A-startFrame_A);
+        
 
-        }
+        // if(curState == nextState && fadingToA)
+        // { 
+        //     // var frameTemp = frame;
+        //     // frame += Math.abs(endFrame_A-startFrame_A);
+        //     frame =  Math.abs(Math.abs(endFrame_A-startFrame_A) - frame) + Math.abs(endFrame_A-startFrame_A);
+
+        // }
 
 
         //   console.log("CUR STATE : "+curState+" ::: from frame "+startFrame_A+" to "+endFrame_A);
@@ -627,7 +820,12 @@ return {
 Init:Init
 
 };
-
+function getForwardVector(_mesh) {
+    _mesh.computeWorldMatrix(true);
+    var forward_local = new BABYLON.Vector3(0, 0, 1);
+    worldMatrix = _mesh.getWorldMatrix();
+    return BABYLON.Vector3.TransformNormal(forward_local, worldMatrix);
+}
 })();
 
 export default MoPopModule;
