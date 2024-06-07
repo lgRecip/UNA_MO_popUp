@@ -87,28 +87,34 @@ var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(-1, 1,
     });
 
 BABYLON.SceneLoader.ImportMesh("","https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/","transCubes_elments.glb", scene, function(newMeshes,particleSystems, skeletons){
+newMeshes[0].isVisible = false;
+for (var i = 0; i < newMeshes[0].getChildMeshes().length; i++) {
+        newMeshes[0].getChildMeshes()[i].isVisible = false;
+    }
 meshElements = newMeshes[0];
 meshElements.receiveShadows = true;
-
 shadowGenerator1.getShadowMap().renderList.push(meshSolides);
 shadowGenerator1.addShadowCaster(meshSolides);
 shadowGenerator0.getShadowMap().renderList.push(meshSolides);
 shadowGenerator0.addShadowCaster(meshSolides);
-let mymesh =newMeshes[0].getChildMeshes();
-console.log("mesh solides elmements count : "+mymesh.length);
-for (var i = 0; i < mymesh.length; i++) {
-mymesh[i].receiveShadows = true;
-mymesh[i].material =elementsMaterial;
-shadowGenerator0.getShadowMap().renderList.push(mymesh[i]);
-shadowGenerator1.getShadowMap().renderList.push(mymesh[i]);
+console.log("mesh solides elmements count : "+meshElements.getChildMeshes().length);
+for (var i = 0; i < meshElements.getChildMeshes().length; i++) {
+meshElements.getChildMeshes()[i].receiveShadows = true;
+meshElements.getChildMeshes()[i].material =elementsMaterial;
+shadowGenerator0.getShadowMap().renderList.push(meshElements.getChildMeshes()[i]);
+shadowGenerator1.getShadowMap().renderList.push(meshElements.getChildMeshes()[i]);
 shadowGenerator0.addShadowCaster(mymesh[i]);
 shadowGenerator1.addShadowCaster(mymesh[i]);
-mymesh[i].isVisible = false;
+meshElements.getChildMeshes()[i].isVisible = false;
 }
 
 });
 
 BABYLON.SceneLoader.ImportMesh("","https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/","transCubes_solides.glb", scene, function(newMeshes,particleSystems, skeletons){
+newMeshes[0].isVisible = false;
+for (var i = 0; i < newMeshes[0].getChildMeshes().length; i++) {
+        newMeshes[0].getChildMeshes()[i].isVisible = false;
+    }
 meshSolides = newMeshes[0];
 meshSolides.receiveShadows = true;
 meshSolides.material =solidesMaterial;
@@ -116,33 +122,35 @@ shadowGenerator1.getShadowMap().renderList.push(meshSolides);
 shadowGenerator1.addShadowCaster(meshSolides);
 shadowGenerator0.getShadowMap().renderList.push(meshSolides);
 shadowGenerator0.addShadowCaster(meshSolides);
-let mymesh =newMeshes[0].getChildMeshes();
-console.log("mesh solides elmements count : "+mymesh.length);
-for (var i = 0; i < mymesh.length; i++) {
-mymesh[i].receiveShadows = true;
-mymesh[i].material =solidesMaterial;
-shadowGenerator0.getShadowMap().renderList.push(mymesh[i]);
-shadowGenerator1.getShadowMap().renderList.push(mymesh[i]);
-shadowGenerator0.addShadowCaster(mymesh[i]);
-shadowGenerator1.addShadowCaster(mymesh[i]);
-mymesh[i].isVisible = false;
+console.log("mesh solides elmements count : "+meshSolides.getChildMeshes().length);
+for (var i = 0; i < meshSolides.getChildMeshes().length; i++) {
+    meshSolides.getChildMeshes()[i].receiveShadows = true;
+    meshSolides.getChildMeshes()[i].material =solidesMaterial;
+shadowGenerator0.getShadowMap().renderList.push(meshSolides.getChildMeshes()[i]);
+shadowGenerator1.getShadowMap().renderList.push(meshSolides.getChildMeshes()[i]);
+shadowGenerator0.addShadowCaster(meshSolides.getChildMeshes()[i]);
+shadowGenerator1.addShadowCaster(meshSolides.getChildMeshes()[i]);
+meshSolides.getChildMeshes()[i].isVisible = false;
 }
 
 });
 
 BABYLON.SceneLoader.ImportMesh("","https://raw.githubusercontent.com/lgRecip/UNA_MO_popUp/main/","transCubes_meshGround.glb", scene, function(newMeshes,particleSystems, skeletons){
+newMeshes[0].isVisible = false;
+for (var i = 0; i < newMeshes[0].getChildMeshes().length; i++) {
+    newMeshes[0].getChildMeshes()[i].isVisible = false;
+}
 meshGround = newMeshes[0];
 meshGround.receiveShadows = true;
 meshGround.scaling = new BABYLON.Vector3(2.0,2.0,2.0);
 meshGround.position = new BABYLON.Vector3(-3.0,0.0,0.0);
-let mymesh =newMeshes[0].getChildMeshes();
-console.log("mesh solides elmements count : "+mymesh.length);
-for (var i = 0; i < mymesh.length; i++) {
-mymesh[i].receiveShadows = true;
-mymesh[i].material = groundMaterial;
-mymesh[i].checkCollisions = false;
-mymesh[i].isPickable = false;
-mymesh[i].isVisible = false;
+
+console.log("mesh solides elmements count : "+meshGround.getChildMeshes().length);
+for (var i = 0; i < meshGround.getChildMeshes().length; i++) {
+    meshGround.getChildMeshes()[i].receiveShadows = true;
+    meshGround.getChildMeshes()[i].material = groundMaterial;
+    meshGround.getChildMeshes()[i].checkCollisions = false;
+    meshGround.getChildMeshes()[i].isPickable = false;
 }
 
 });
@@ -357,6 +365,7 @@ var introAnimFrame = 226;
 var logoAnimDuration = 6.0;
 var lastAnimTime = -1.0;
 var curAnimTime = -1.0;
+var meshShown = false;
 function Intro(){
     setInterval(function() {
         if(!meshWellLoaded){
@@ -368,12 +377,11 @@ function Intro(){
         lastAnimTime = curAnimTime;
         introFrame += 1;
         var lerpAlpha = 1.0;
-        // console.log(videoTexture.video.currentTime);
-        if(introFrame == 30)
-            {
-//                 let mymesh =meshElements.getChildMeshes();
-// console.log("mesh solides elmements count : "+mymesh.length);
 
+        if(curAnimTime > 3.0 && !meshShown)
+            {
+
+                meshShown = true;
 for (var i = 0; i < meshElements.getChildMeshes().length; i++) {
     meshElements.getChildMeshes()[i].isVisible = true;
     }
@@ -389,6 +397,7 @@ for (var i = 0; i < meshElements.getChildMeshes().length; i++) {
             scene.animationGroups[1].goToFrame(introAnimFrame);
 
             }
+
         if(introFrame > introFrameIn)
             {
 
@@ -407,7 +416,6 @@ for (var i = 0; i < meshElements.getChildMeshes().length; i++) {
 
                 videoPlane.material.alpha = lerpAlpha;
                 if(lerpAlpha<=0.0){introduced = true;}
-                // console.log(videoPlane.material.alpha);
             }
     }, 33);
 }
@@ -431,10 +439,6 @@ function MeshLoadedChecker(){
                 scene.animationGroups[1].pause();
                 scene.animationGroups[0].goToFrame(introAnimFrame);
                 scene.animationGroups[1].goToFrame(introAnimFrame);
-                // scene.animationGroups[0].stop();
-                // scene.animationGroups[1].stop();
-                // scene.animationGroups[0].start(false, 1,1, 1);
-                // scene.animationGroups[1].start(false, 1,1, 1);
                 LightCasterAssignment();
             }
     }, 16);
