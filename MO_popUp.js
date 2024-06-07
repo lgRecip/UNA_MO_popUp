@@ -103,8 +103,8 @@ meshElements.getChildMeshes()[i].receiveShadows = true;
 meshElements.getChildMeshes()[i].material =elementsMaterial;
 shadowGenerator0.getShadowMap().renderList.push(meshElements.getChildMeshes()[i]);
 shadowGenerator1.getShadowMap().renderList.push(meshElements.getChildMeshes()[i]);
-shadowGenerator0.addShadowCaster(mymesh[i]);
-shadowGenerator1.addShadowCaster(mymesh[i]);
+shadowGenerator0.addShadowCaster(meshElements.getChildMeshes()[i]);
+shadowGenerator1.addShadowCaster(meshElements.getChildMeshes()[i]);
 meshElements.getChildMeshes()[i].isVisible = false;
 }
 
