@@ -47,8 +47,8 @@ var createScene = function () {
           isTouchDevice = true;
         }
         var deviceAgent = navigator.userAgent.toLowerCase();
-        isTouchDevice = (deviceAgent.match(/(iphone|ipod|ipad)/) || deviceAgent.match(/(android)/) || deviceAgent.match(/(iemobile)/) || deviceAgent.match(/iphone/i) || deviceAgent.match(/ipad/i) || deviceAgent.match(/ipod/i) || deviceAgent.match(/blackberry/i) || deviceAgent.match(/bada/i));
-        alert("is Mobile? "+isTouchDevice);
+      //  isTouchDevice = (deviceAgent.match(/(iphone|ipod|ipad)/) || deviceAgent.match(/(android)/) || deviceAgent.match(/(iemobile)/) || deviceAgent.match(/iphone/i) || deviceAgent.match(/ipad/i) || deviceAgent.match(/ipod/i) || deviceAgent.match(/blackberry/i) || deviceAgent.match(/bada/i));
+        alert("is Mobile? "+deviceAgent);
         
 engine = new BABYLON.Engine(canvas, true);
 scene = new BABYLON.Scene(engine);
