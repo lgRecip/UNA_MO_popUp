@@ -47,7 +47,7 @@ var createScene = function () {
         isMobile = !(deviceAgent.includes("windows"))||!(deviceAgent.includes("macintosh"));
         isMobile = (deviceAgent.includes("iphone"))||(deviceAgent.includes("ipod"))||(deviceAgent.includes("ipad"))||(deviceAgent.includes("android"));
         
-        alert("is Mobile? "+isMobile);
+    //    alert("is Mobile? "+isMobile);
         
 engine = new BABYLON.Engine(canvas, true);
 scene = new BABYLON.Scene(engine);
