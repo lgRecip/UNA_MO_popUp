@@ -18,14 +18,7 @@ import "https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js";
 
 const MoPopModule = (function() {
 
-// DETECTION MOBILE/DESKTOP ?
-        var isTouchDevice = false;
-        if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) {
-          isTouchDevice = true;
-        }
-        var deviceAgent = navigator.userAgent.toLowerCase();
-        isTouchDevice = (deviceAgent.match(/(iphone|ipod|ipad)/) || deviceAgent.match(/(android)/) || deviceAgent.match(/(iemobile)/) || deviceAgent.match(/iphone/i) || deviceAgent.match(/ipad/i) || deviceAgent.match(/ipod/i) || deviceAgent.match(/blackberry/i) || deviceAgent.match(/bada/i));
-        alert("is Mobile? "+isTouchDevice);
+
     
 var canvas = document.getElementById("babyCanvas");
 
@@ -48,6 +41,15 @@ let meshGround;
 
 var createScene = function () {
 
+// DETECTION MOBILE/DESKTOP ?
+        var isTouchDevice = false;
+        if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) {
+          isTouchDevice = true;
+        }
+        var deviceAgent = navigator.userAgent.toLowerCase();
+        isTouchDevice = (deviceAgent.match(/(iphone|ipod|ipad)/) || deviceAgent.match(/(android)/) || deviceAgent.match(/(iemobile)/) || deviceAgent.match(/iphone/i) || deviceAgent.match(/ipad/i) || deviceAgent.match(/ipod/i) || deviceAgent.match(/blackberry/i) || deviceAgent.match(/bada/i));
+        alert("is Mobile? "+isTouchDevice);
+        
 engine = new BABYLON.Engine(canvas, true);
 scene = new BABYLON.Scene(engine);
 scene.clearColor = color_ardoise;
